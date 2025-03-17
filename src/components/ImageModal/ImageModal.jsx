@@ -1,4 +1,5 @@
 import Modal from 'react-modal';
+import css from './ImageModal.module.css';
 
 Modal.setAppElement('#root');
 
@@ -21,6 +22,7 @@ const customStyles = {
     border: 'none',
     boxShadow: '0 4px 15px rgba(0, 0, 0, 0.2)',
     backgroundColor: '#fff',
+    position: 'relative',
   },
 };
 
@@ -32,9 +34,13 @@ const ImageModal = ({ isOpen, image, onClose }) => {
     <>
       <Modal isOpen={isOpen} onRequestClose={onClose} style={customStyles}>
         <img src={image.urls.regular} alt={image.description} />
-        <p>Decsription: {image.description}</p>
-        <p>Image by: {image.user.name}</p>
-        <p>Likes: {image.likes}</p>
+        <p className={css.text}>{image.description}</p>
+        <p className={css.text}>
+          <span className={css.span}>Image by:</span> {image.user.name}
+        </p>
+        <p className={css.text}>
+          <span className={css.span}>Likes:</span> &#128077;{image.likes}
+        </p>
       </Modal>
     </>
   );

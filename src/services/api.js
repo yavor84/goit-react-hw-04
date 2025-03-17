@@ -9,6 +9,7 @@ const fetchImages = async (query, currentPage) => {
     params: {
       query: query,
       per_page: 12,
+      orientation: 'landscape',
       page: currentPage,
       client_id: accessKey,
     },
